@@ -1,0 +1,4 @@
+C:\Users\vantu\OneDrive\Documents\C# Projects\Rock-Paper-Scissors\RogueLikeConsole\obj\Debug\net8.0\RogueLikeConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\vantu\OneDrive\Documents\C# Projects\Rock-Paper-Scissors\RogueLikeConsole\obj\Debug\net8.0\RogueLikeConsole.AssemblyInfoInputs.cache
+C:\Users\vantu\OneDrive\Documents\C# Projects\Rock-Paper-Scissors\RogueLikeConsole\obj\Debug\net8.0\RogueLikeConsole.AssemblyInfo.cs
+C:\Users\vantu\OneDrive\Documents\C# Projects\Rock-Paper-Scissors\RogueLikeConsole\obj\Debug\net8.0\RogueLikeConsole.csproj.CoreCompileInputs.cache
