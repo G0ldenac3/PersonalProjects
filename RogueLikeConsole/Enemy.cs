@@ -7,22 +7,21 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace RogueLikeConsole
 {
-    internal class Player
+    internal class Enemy
     {
         private int maxHealth;
         private int currentHealth;
-        private int Playerdamage;
+        private int Enemydamage;
 
-        //constructor
-        public Player(int maxHealth, int initialdamage)
+        // Constructor
+        public Enemy(int maxHealth, int initialdamage)
         {
             this.maxHealth = maxHealth;
             this.currentHealth = maxHealth;
-            this.Playerdamage = initialdamage;
+            this.Enemydamage = initialdamage;
         }
 
-        //Taking damage
-
+        // Taking damage
         public void TakeDamage(int damage)
         {
             currentHealth -= damage;
@@ -32,44 +31,34 @@ namespace RogueLikeConsole
             }
         }
 
-        //Healing
-
-        public void Heal(int healAmount)
-        {
-            currentHealth += healAmount;
-            if (currentHealth > maxHealth)
-            {
-                currentHealth = maxHealth;
-            }
-        }
-
-        //displaying health
-
+        // Displaying health
         public void DisplayHealth()
         {
-            Console.WriteLine("Player Health: " + currentHealth + "/" + maxHealth);
+            Console.WriteLine("Enemy Health: " + currentHealth + "/" + maxHealth);
         }
 
         public bool IsDead()
         {
             return currentHealth == 0;
         }
-        // Getting player damage
+
+
+        // Getting enemy damage
         public int GetDamage()
         {
-            return Playerdamage;
+            return Enemydamage;
         }
 
-        // Setting player damage
+        // Setting enemy damage
         public void SetDamage(int newDamage)
         {
-            Playerdamage = newDamage;
+            Enemydamage = newDamage;
         }
 
-        // Attacking an enemy
-        public void Attack(Enemy enemy)
+        // Attacking the player
+        public void Attack(Player player)
         {
-            enemy.TakeDamage(Playerdamage);
+            player.TakeDamage(Enemydamage);
         }
     }
 }
