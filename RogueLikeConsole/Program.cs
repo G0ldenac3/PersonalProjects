@@ -12,6 +12,7 @@ namespace RogueLikeConsole
 
             Player player = new Player(100, 0);
             int Flasks = 0;
+            int HealthGain = 20;
 
             //Start Menu
 
@@ -69,6 +70,7 @@ namespace RogueLikeConsole
             Console.WriteLine("The heavy iron door groans as you push against it, revealing a slimy, green figure.");
             Thread.Sleep(1000);
             Console.WriteLine("The figure turns around it is a slime protecting the enterance to the dungeon.");
+            Console.WriteLine();
 
             Thread.Sleep(1000);
 
@@ -96,7 +98,20 @@ namespace RogueLikeConsole
                             Thread.Sleep(1000);
                             Console.WriteLine("The slime takes damage!");
                             slimeStarter.DisplayHealth();
-                            break;
+                            Thread.Sleep(1000);
+                            if (slimeStarter.IsDead())
+                            {
+                                break;
+                            }
+                            else;
+                            {
+                                Console.WriteLine();
+                                Console.WriteLine("The slime attacks you!");
+                                slimeStarter.Attack(player);
+                                player.DisplayHealth();
+                                break;
+                            }
+                            
 
                         case 2:
                             if (Flasks > 0)
@@ -104,33 +119,49 @@ namespace RogueLikeConsole
                                 Console.WriteLine("You drink a flask of health!");
                                 Console.WriteLine();
                                 Thread.Sleep(1000);
-                                player.Heal(20);
+                                player.Heal(HealthGain);
+                                player.DisplayHealth();
+                                Thread.Sleep(1000);
+                                Console.WriteLine();
+                                Console.WriteLine("The slime attacks you!");
+                                slimeStarter.Attack(player);
                                 player.DisplayHealth();
                                 Flasks--;
                             }
                             else
                             {
                                 Console.WriteLine("You have no flasks left!");
+                                Console.WriteLine();
                             }
                             break;
 
                         default:
                             Console.WriteLine("Invalid input, please select 1 or 2.");
+                            Console.WriteLine();
                             break;
                     }
                 }
                 else
                 {
                     Console.WriteLine("Invalid input, either you are annoying as shit, or you dont know what a number is");
+                    Console.WriteLine();
                 }
                 if (slimeStarter.IsDead())
                 {
                     break;
                 }
 
-                Console.WriteLine("you won");
+                
             }
-            Console.WriteLine("you won");
-        }   
+            //starting rewards
+
+            Console.WriteLine();
+            Console.WriteLine("The slime has been slain you won!");
+            Thread.Sleep(1000);
+            Console.WriteLine("You gained 5 Healhtpotions!");
+            Flasks = Flasks + 5;
+
+            
+        }
     }
 }
