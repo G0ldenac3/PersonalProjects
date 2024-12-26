@@ -7,6 +7,18 @@ namespace RogueLikeConsole
     {
         static void Main(string[] args)
         {
+            //Random generators
+
+            Random BasicChest = new Random();
+
+            //Variables
+
+            string actionInput;
+            int action;
+            int BasicChestLoot = BasicChest.Next(1, 5);
+            string UserYN;
+           
+
             //Creating a player with 100 health + other player stats
 
 
@@ -85,8 +97,8 @@ namespace RogueLikeConsole
                 Console.WriteLine("What is your action?");
                 Console.WriteLine("1. Attack");
                 Console.WriteLine("2. Heal");
-                string actionInput = Console.ReadLine();
-                int action;
+                actionInput = Console.ReadLine();
+
                 if (int.TryParse(actionInput, out action))
                 {
                     switch (action)
@@ -111,7 +123,7 @@ namespace RogueLikeConsole
                                 player.DisplayHealth();
                                 break;
                             }
-                            
+
 
                         case 2:
                             if (Flasks > 0)
@@ -151,7 +163,7 @@ namespace RogueLikeConsole
                     break;
                 }
 
-                
+
             }
             //starting rewards
 
@@ -160,8 +172,105 @@ namespace RogueLikeConsole
             Thread.Sleep(1000);
             Console.WriteLine("You gained 5 Healhtpotions!");
             Flasks = Flasks + 5;
+            Console.WriteLine("....");
+            Console.WriteLine("....");
+            Thread.Sleep(1000);
 
-            
+            //First hallway
+            while (true) 
+            {
+
+                Console.WriteLine("As you finally enter the dungeon you come across two paths");
+                Thread.Sleep(500);
+                Console.WriteLine("Which path will you take?");
+                Console.WriteLine("1. Left");
+                Console.WriteLine("2. right ");
+                actionInput = Console.ReadLine();
+
+                if (int.TryParse(actionInput, out action))
+                {
+                    switch (action)
+                    {
+                        //LEFT PATH
+
+                        case 1:
+                            while (true)
+                            {
+                                Console.WriteLine("You take the left path");
+                                Thread.Sleep(1000);
+                                Console.WriteLine("After walking a while you notice a room next to the pathway, in the middle of that room there stands a chest.");
+                                Thread.Sleep(1000);
+                                Console.WriteLine("Do you want to open the chest? Y/N");
+                                UserYN = Console.ReadLine().ToUpper();
+                                switch (UserYN)
+                                {
+                                    case "Y":
+                                        //CHEST LOOP
+
+                                        if (BasicChestLoot == 1)
+                                        {
+                                            Console.WriteLine("You Found a better weapon!");
+                                            player.AddDamage(5);
+                                            Console.WriteLine("Your damage is now: " + player.GetDamage());
+                                        }
+                                        else if (BasicChestLoot == 2)
+                                        {
+                                            Console.WriteLine("You Found a better healthpotion!");
+                                            HealthGain = HealthGain + 10;
+                                        }
+                                        else if (BasicChestLoot == 3)
+                                        {
+                                            Console.WriteLine("The chest was trapped!");
+                                            player.TakeDamage(5);
+                                            player.DisplayHealth();
+                                        }
+                                        else if (BasicChestLoot == 4)
+                                        {
+                                            Console.WriteLine("The chest was empty.");
+                                            
+                                        }
+                                        else if (BasicChestLoot == 5)
+                                        {
+                                            Console.WriteLine("The chest was empty.");
+                                        }
+
+                                        break;
+                                        //CHEST LOOP END
+
+                                    case "N":
+                                        Console.WriteLine("You decide to leave the chest alone.");
+                                        break;
+                                    default:
+                                        Console.WriteLine("Invalid input, please enter Y or N.");
+                                        continue;
+                                }
+                                break;
+                                
+                            }
+                            break;
+
+                        //RIGHT PATH
+
+                        case 2:
+                            Console.WriteLine("You take the right path.");
+                            break;
+                        default:
+                                Console.WriteLine("Invalid input, please select 1 or 2.");
+                         continue;
+                    }
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, either you are annoying as shit, or you don't know what a number is");
+                    Console.WriteLine();
+                }
+            }
+
+            //END OF HALLWAY LOOP
+
+            Console.WriteLine("END LOOP");
+
         }
     }
 }

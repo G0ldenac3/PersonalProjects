@@ -71,5 +71,9 @@ namespace RogueLikeConsole
         {
             enemy.TakeDamage(Playerdamage);
         }
+        public void AddDamage(int amount)
+        {
+            Playerdamage += amount;
+        }
     }
 }
