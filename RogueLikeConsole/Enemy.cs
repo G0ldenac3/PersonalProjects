@@ -54,6 +54,18 @@ namespace RogueLikeConsole
         {
             Enemydamage = newDamage;
         }
+        public void Heal(int healAmount)
+        {
+            currentHealth += healAmount;
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+        }
+        public void Reset()
+        {
+            currentHealth = maxHealth;
+        }
 
         // Attacking the player
         public void Attack(Player player)

@@ -7,6 +7,12 @@ namespace RogueLikeConsole
     {
         static void Main(string[] args)
         {
+
+            //Enemy creation
+
+            Enemy slimeStarter = new Enemy(30, 5);
+            Enemy Skeleton = new Enemy(50, 10);
+
             //Random generators
 
             Random BasicChest = new Random();
@@ -86,7 +92,7 @@ namespace RogueLikeConsole
 
             Thread.Sleep(1000);
 
-            Enemy slimeStarter = new Enemy(30, 5);
+            
 
 
 
@@ -165,6 +171,12 @@ namespace RogueLikeConsole
 
 
             }
+            
+            //Reseting slime after fight
+
+            slimeStarter.Reset();
+
+           
             //starting rewards
 
             Console.WriteLine();
@@ -253,7 +265,17 @@ namespace RogueLikeConsole
 
                         case 2:
                             Console.WriteLine("You take the right path.");
+                            Thread.Sleep(1000);
+                            Console.WriteLine();
+
+
+                            //ENEMY ENCOUNTER LOOP
+                            while (true)
+                            {
+                                Console.WriteLine("You encounter an enemy skeleton");
+                            }
                             break;
+
                         default:
                                 Console.WriteLine("Invalid input, please select 1 or 2.");
                          continue;
